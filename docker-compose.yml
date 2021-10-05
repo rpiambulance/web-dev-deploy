@@ -6,7 +6,8 @@ services:
     ports:
       - "3000:3000"
     volumes:
-      - central:/var/www/app
+      - ./central:/var/www/app
+      - /var/www/app/node_modules/
     environment:
       TZ: "America/New York"
     command: ["npm", "run", "dev"]
@@ -17,7 +18,8 @@ services:
     ports:
       - "8080:8080"
     volumes:
-      - rampart:/var/www/app
+      - ./rampart:/var/www/app
+      - /var/www/app/node_modules/
     environment:
       TZ: "America/New York"
     command: ["npm", "run", "watch"]
@@ -37,6 +39,3 @@ services:
         POSTGRES_USER: ${DB_USERNAME?USERNAME variable not set}
         POSTGRES_PASSWORD: ${DB_PASSWORD?PASSWORD variable not set}
         POSTGRES_DB: ${DB_NAME?DB_NAME variable not set}
-volumes:
-  rampart:
-  central:
