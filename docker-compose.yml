@@ -2,7 +2,7 @@ version: '3.0'
 
 services:
   central:
-    build: https://github.com/rpiambulance/central.git#main
+    build: ./central
     ports:
       - "3000:3000"
     volumes:
@@ -13,7 +13,7 @@ services:
     depends_on:
       - rampart
   rampart:
-    build: https://github.com/rpiambulance/rampart.git#main
+    build: ./rampart
     ports:
       - "8080:8080"
     volumes:
