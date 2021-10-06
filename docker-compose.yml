@@ -10,6 +10,7 @@ services:
       - /var/www/app/node_modules/
     environment:
       TZ: "America/New York"
+      NEXT_PUBLIC_GOOGLE_CLIENT_ID: ${GOOGLE_CLIENT_ID?Google client id not set!}
     command: ["npm", "run", "dev"]
     depends_on:
       - rampart
@@ -22,6 +23,10 @@ services:
       - /var/www/app/node_modules/
     environment:
       TZ: "America/New York"
+      RAMPART_PORT: ${RAMPART_PORT?RAMPART_PORT variable not set}
+      DB_USERNAME: ${DB_USERNAME?USERNAME variable not set}
+      DB_PASSWORD: ${DB_PASSWORD?PASSWORD variable not set}
+      DB_NAME: ${DB_NAME?DB_NAME variable not set}
     command: ["npm", "run", "watch"]
     depends_on:
       - db
