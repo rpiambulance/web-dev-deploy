@@ -23,6 +23,7 @@ services:
       - /var/www/app/node_modules/
     environment:
       TZ: "America/New York"
+      GOOGLE_CLIENT_ID: ${GOOGLE_CLIENT_ID?Google client id not set!}
       RAMPART_PORT: ${RAMPART_PORT?RAMPART_PORT variable not set}
       DB_USERNAME: ${DB_USERNAME?USERNAME variable not set}
       DB_PASSWORD: ${DB_PASSWORD?PASSWORD variable not set}
