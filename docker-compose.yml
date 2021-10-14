@@ -10,7 +10,10 @@ services:
       - /var/www/app/node_modules/
     environment:
       TZ: "America/New York"
-      NEXT_PUBLIC_GOOGLE_CLIENT_ID: ${GOOGLE_CLIENT_ID?Google client id not set!}
+      GOOGLE_CLIENT_ID: ${GOOGLE_CLIENT_ID?Google client id not set!}
+      GOOGLE_CLIENT_SECRET: ${GOOGLE_CLIENT_SECRET?Google client secret not set!}
+      NEXTAUTH_URL: ${CENTRAL_URL?Central URL not set!}
+      NEXT_PUBLIC_RAMPART_URL: ${RAMPART_URL?Rampart URL not set!}
     command: ["npm", "run", "dev"]
     depends_on:
       - rampart
