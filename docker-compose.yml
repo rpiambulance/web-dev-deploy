@@ -7,7 +7,7 @@ services:
       - "3000:3000"
     volumes:
       - ./central:/var/www/app
-      - /var/www/app/node_modules/
+      - centralModules:/var/www/app/node_modules/
     environment:
       TZ: "America/New York"
       GOOGLE_CLIENT_ID: ${GOOGLE_CLIENT_ID?Google client id not set!}
@@ -23,7 +23,7 @@ services:
       - "8080:8080"
     volumes:
       - ./rampart:/var/www/app
-      - /var/www/app/node_modules/
+      - rampartModules:/var/www/app/node_modules/
     environment:
       TZ: "America/New York"
       GOOGLE_CLIENT_ID: ${GOOGLE_CLIENT_ID?Google client id not set!}
@@ -48,3 +48,6 @@ services:
         POSTGRES_USER: ${DB_USERNAME?USERNAME variable not set}
         POSTGRES_PASSWORD: ${DB_PASSWORD?PASSWORD variable not set}
         POSTGRES_DB: ${DB_NAME?DB_NAME variable not set}
+volumes:
+  centralModules:
+  rampartModules:
