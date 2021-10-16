@@ -13,6 +13,7 @@ services:
       GOOGLE_CLIENT_ID: ${GOOGLE_CLIENT_ID?Google client id not set!}
       GOOGLE_CLIENT_SECRET: ${GOOGLE_CLIENT_SECRET?Google client secret not set!}
       NEXTAUTH_URL: ${CENTRAL_URL?Central URL not set!}
+      JWT_SECRET: ${JWT_SECRET? JWT_SECRET not set!}
       NEXT_PUBLIC_RAMPART_URL: ${RAMPART_URL?Rampart URL not set!}
     command: ["npm", "run", "dev"]
     depends_on:
@@ -31,6 +32,7 @@ services:
       DB_USERNAME: ${DB_USERNAME?USERNAME variable not set}
       DB_PASSWORD: ${DB_PASSWORD?PASSWORD variable not set}
       DB_NAME: ${DB_NAME?DB_NAME variable not set}
+      JWT_SECRET: ${JWT_SECRET?JWT_SECRET variable not set}
     command: ["npm", "run", "watch"]
     depends_on:
       - db

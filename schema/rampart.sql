@@ -11,6 +11,7 @@ $$ language 'plpgsql';
 CREATE TABLE "users"
 (
  "id"             serial NOT NULL,
+ "g_id"           text NOT NULL,
  "first_name"     text NOT NULL,
  "last_name"      text NOT NULL,
  "nine_hundred"   int NULL,
@@ -31,25 +32,18 @@ CREATE TABLE "users"
  "last_login"     timestamp NULL,
  "active"         boolean NOT NULL,
  "access_revoked" boolean NOT NULL,
- "g_id"           text NULL,
  "slack_id"       text NULL,
- "created_by"     int NOT NULL,
  "created"        timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
  "updated_by"     int NULL,
  "updated"        timestamp NULL,
  CONSTRAINT "Ind_573id" UNIQUE ( "id" ),
- CONSTRAINT "FK_383" FOREIGN KEY ( "created_by" ) REFERENCES "users" ( "id" ),
+ CONSTRAINT "Unique_GID" UNIQUE ( "g_id" ),
  CONSTRAINT "FK_387" FOREIGN KEY ( "updated_by" ) REFERENCES "users" ( "id" )
 );
 
 CREATE UNIQUE INDEX "PK_users" ON "users"
 (
  "id"
-);
-
-CREATE INDEX "fkIdx_383" ON "users"
-(
- "created_by"
 );
 
 CREATE INDEX "fkIdx_387" ON "users"
@@ -60,10 +54,6 @@ CREATE INDEX "fkIdx_387" ON "users"
 CREATE TRIGGER "users_autoset_timestamp_cols" BEFORE UPDATE
 ON "users" FOR EACH ROW EXECUTE PROCEDURE
 autoset_update_col();
-
--- Create first user otherwise we in trouble
-INSERT INTO users (id, first_name, last_name, dob, email, phone, admin, active, access_revoked, created_by)
-    VALUES (0, 'RPI', 'Ambulance', date '1970-01-01', 'admin@rpi.edu', '5189772963', TRUE, TRUE, FALSE, 0);
 
 -- OTHER_CERTS
 CREATE TABLE "other_certs"
