@@ -27,7 +27,7 @@ CREATE TABLE "users"
  "local_zip"      text NULL,
  "phone"          text NOT NULL,
  "rcs_id"         text NULL,
- "rin"            int NULL,
+ "rin"            text NULL,
  "admin"          boolean NOT NULL,
  "last_login"     timestamp NULL,
  "active"         boolean NOT NULL,
