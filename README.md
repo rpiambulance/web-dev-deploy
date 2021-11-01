@@ -14,7 +14,7 @@ It is recommended using something like VS Code + the remote containers extension
 3. Install Visual Studio code
 4. Install the Remote Containers extension 
 5. Install the docker extension
-6. Run `./deploy.sh`
+6. Run `./deploy.sh` (or `./deploy.bat` if on Windows)
 7. Click the docker icon
 8. Right click the service you're working on and click Attach Visual Studio Code.
 9. 🖥️ Code
